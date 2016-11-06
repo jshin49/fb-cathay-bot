@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cathy</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- <link href="//cdn.muicss.com/mui-0.9.3/css/mui.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- background-image: url("../img/bannerImage.png"); -->
+  </head>
+
+  <body>
+    <img src="./assets/img/bannerImage1.png" style="width:100%; height:100%;" />
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 jumbotron" style="margin-top:20px">
+          <h2 id="cathayColorText"> Your flight booking was successful! </h2>
+          <img src="./assets/img/ticketInfoImage.png" style="width:100%;"/>
+          <br><br>
+          <div class="col-xs-12"><h4 id="cathayColorText">Notification via <img src="./assets/img/facebook_messenger.png" style="height:17px"></img>Messenger</h4> </div>
+          <div class="col-xs-12"><font style="size:8px"> Recieve updates from our Facebook Chat Bot Cathy? </font></div>
+          <div class="col-xs-12"><br></div>
+          <div class="col-xs-offset-3 col-xs-6">
+            <button id="postBtn" type="button" class="btn" style="background-color:#006566; color:white;">Yes</button>
+            <button type="button" class="btn btn-default">No</button>
+          </div>
+          <div class="col-xs-3">
+          </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+      function postFunction() {
+        console.log("clicked");
+        $.get("YOUR-APP-SERVER/webhook?verify_token=just_do_it&booking=done", function(data, status){
+            alert("Responded w status: " + status);
+        });
+        window.location.replace("https://www.messenger.com/t/YOUR-FACEBOOK-PAGEID");
+      }
+
+      $('#postBtn').on('click', function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        postFunction();
+        e.stopImmediatePropagation();
+      });
+    </script>
+  </body>
+</html>

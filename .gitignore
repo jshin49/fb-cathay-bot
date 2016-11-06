@@ -1,0 +1,4 @@
+node_modules
+sessions
+.DS_STORE
+static/.DS_Store
